@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
     agent any
     stages{
         stage('Build'){
@@ -40,4 +40,65 @@ pipeline {
 
     }
 }
+*/
 
+pipeline{
+
+	agent any
+	
+	parameters{
+			string(name:'ipServeurUAT',defaultValue:'C:\Users\younes\projets\serveurs\apache-tomcat-8.5.34\webapps',description:'')
+			string(name:'ipServeurPROD',defaultValue:'C:\Users\younes\projets\serveurs\apache-tomcat-8.5.34second\webapps',description:'')
+	}
+	
+	triggers{
+		pollSCM:'* * * * *'
+	}
+	
+	stages{
+	
+		stage('Compilation et build'){
+			
+			step{
+				
+				echo 'clean and package....'
+				bat:' mvn clean package'
+			
+			}
+			post{
+			
+				success{
+					
+					echo 'Now archiving the war file ....'
+					ArchiveArtifacts artifacts: '**/*.war'
+					
+				}
+			
+			}
+		
+		}
+		
+		stage('Deploiment dev et prod'){
+		
+			parallel{
+				
+				stage('deploy to UAT'){
+					
+					bat " copy **/*.war ${params.ipServeurUAT} "
+					
+				}
+			
+				stage('deploy to prod'){
+				
+					bat " copy **/*.war ${params.ipServeurPROD} "
+				
+				}
+			}	
+		
+		}
+	
+	
+	}
+
+
+}
