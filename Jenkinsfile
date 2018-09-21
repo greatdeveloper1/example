@@ -47,8 +47,8 @@ pipeline{
 	agent any
 	
 	parameters{
-			string(name:'ipServeurUAT',defaultValue:'C:\Users\younes\projets\serveurs\apache-tomcat-8.5.34\webapps',description:'')
-			string(name:'ipServeurPROD',defaultValue:'C:\Users\younes\projets\serveurs\apache-tomcat-8.5.34second\webapps',description:'')
+			string(name:'ipServeurUAT',defaultValue:'C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps',description:'')
+			string(name:'ipServeurPROD',defaultValue:'C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34second\\webapps',description:'')
 	}
 	
 	triggers{
