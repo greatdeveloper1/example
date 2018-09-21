@@ -52,14 +52,14 @@ pipeline{
 	}
 	
 	triggers{
-		pollSCM:'* * * * *'
+		pollSCM('* * * * *')
 	}
 	
 	stages{
 	
 		stage('Compilation et build'){
 			
-			step{
+			steps{
 				
 				echo 'clean and package....'
 				bat:' mvn clean package'
@@ -83,15 +83,15 @@ pipeline{
 			parallel{
 				
 				stage('deploy to UAT'){
-					
+				 steps{
 					bat " copy **/*.war ${params.ipServeurUAT} "
-					
+					}
 				}
 			
 				stage('deploy to prod'){
-				
+				  steps{
 					bat " copy **/*.war ${params.ipServeurPROD} "
-				
+				  }
 				}
 			}	
 		
