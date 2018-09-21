@@ -62,7 +62,7 @@ pipeline{
 			steps{
 				
 				echo 'clean and package....'
-				bat:' mvn clean package'
+				bat ' mvn clean package'
 			
 			}
 			post{
