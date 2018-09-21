@@ -70,7 +70,7 @@ pipeline{
 				success{
 					
 					echo 'Now archiving the war file ....'
-					ArchiveArtifacts artifacts: '**/*.war'
+					archiveArtifacts artifacts: '**/*.war'
 					
 				}
 			
