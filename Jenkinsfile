@@ -47,8 +47,8 @@ pipeline{
 	agent any
 	
 	parameters{
-			string(name:'ipServeurUAT',defaultValue:'localhost',description:'')
-			string(name:'ipServeurPROD',defaultValue:'localhost',description:'')
+			string(name:'ipuat',defaultValue:'localhost',description:'')
+			string(name:'ipprod',defaultValue:'localhost',description:'')
 	}
 	
 	triggers{
@@ -84,13 +84,13 @@ pipeline{
 				
 				stage('deploy to UAT'){
 				 steps{
-					bat " copy **/*.war ${params.ipServeurUAT} "
+					bat " copy **/*.war ${params.ipuat} "
 					}
 				}
 			
 				stage('deploy to prod'){
 				  steps{
-					bat " copy **/*.war ${params.ipServeurPROD} "
+					bat " copy **/*.war ${params.ipprod} "
 				  }
 				}
 			}	
