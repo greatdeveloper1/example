@@ -41,7 +41,7 @@ pipeline{
 				
 				stage('deploy to UAT'){
 				 steps{
-					bat 'copy ${params.jenWorPath} C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps' 
+					bat "copy ${params.jenWorPath} C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps" 
 					}
 				}
 			
