@@ -35,13 +35,13 @@ pipeline{
 				
 				stage('deploy to UAT'){
 				 steps{
-					bat " copy C:\\"Program Files (x86)"\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps "
+					bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war" C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps' 
 					}
 				}
 			
 				stage('deploy to prod'){
 				  steps{
-					bat " copy C:\\"Program Files (x86)"\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34second\\webapps "
+					bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war" C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34second\\webapps'
 				  }
 				}
 			}	
