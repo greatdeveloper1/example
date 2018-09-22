@@ -3,9 +3,11 @@ pipeline{
 	agent any
 	
 	parameters {
-        string(name: 'jenWorPath', defaultValue: '"C:\\Program Files (x86)\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war"', description: 'Who should I say hello to?')
+        string(name: 'jenWorPath', defaultValue: '"C:\\Program Files (x86)\\Jenkins\\workspace\\fullAutomatedPipeline\\webapp\\target\\*.war"', description: '')
 
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'UATserver', defaultValue: '"C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps"', description: '')
+		
+		string(name: 'Prodserver', defaultValue: '"C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34second\\webapps"', description: '')
     }
 	
 	triggers{
@@ -41,13 +43,13 @@ pipeline{
 				
 				stage('deploy to UAT'){
 				 steps{
-					bat "copy ${params.jenWorPath} C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34\\webapps" 
+					bat "copy ${params.jenWorPath} ${params.UATserver}" 
 					}
 				}
 			
 				stage('deploy to prod'){
 				  steps{
-					bat 'copy ${params.jenWorPath} C:\\Users\\younes\\projets\\serveurs\\apache-tomcat-8.5.34second\\webapps'
+					bat 'copy ${params.jenWorPath} ${params.Prodserver}'
 				  }
 				}
 			}	
