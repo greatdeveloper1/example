@@ -49,7 +49,7 @@ pipeline{
 			
 				stage('deploy to prod'){
 				  steps{
-					bat 'copy ${params.jenWorPath} ${params.Prodserver}'
+					bat "copy ${params.jenWorPath} ${params.Prodserver}"
 				  }
 				}
 			}	
